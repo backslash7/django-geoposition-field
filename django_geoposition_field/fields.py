@@ -3,14 +3,13 @@ from __future__ import unicode_literals
 
 from django.core.validators import ValidationError
 from django.db import models
-from django.utils.six import with_metaclass
 from django.utils.translation import ugettext_lazy as _
 
 from . import Geoposition
 from .forms import GeopositionField as GeopositionFormField
 
 
-class GeopositionField(with_metaclass(models.SubfieldBase, models.Field)):
+class GeopositionField(models.Field):
 	description = _("A geoposition (latitude and longitude)")
 	default_error_messages = {
 		'invalid': _("Enter a valid geoposition.")
